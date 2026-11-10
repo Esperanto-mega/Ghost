@@ -1,12 +1,13 @@
 # Ghost
-[Echoes in Filter Bubble: Diagnosing and Curing Popularity Bias in Generative Recommenders.](https://arxiv.org/pdf/2605.16825) (NeurIPS 2026)
+[Towards Pareto Optimality in Popularity Debiasing for Generative Recommender Systems](https://arxiv.org/pdf/2605.16825) (NeurIPS 2026)
 
 <img width="1468" height="512" alt="QQ_1779762707970" src="https://github.com/user-attachments/assets/bdb38a11-58a0-4f78-935e-6a6485f7232f" />
 <div align="center">
   <img width="1468" height="532" alt="image" src="https://github.com/user-attachments/assets/84e07383-4620-4e64-9b76-42611b5ee52c" />
 </div>
 
-### Environment Requirement
+---
+### Environment Requirements
 ```
 torch
 transformers
@@ -20,7 +21,7 @@ k-means-constrained
 
 ---
 ### Dataset
-We use three datasets in our paper, all of which have been uploaded to [Google Drive](https://drive.google.com/drive/folders/1RcJ2M1l5zWPHYuGd9l5Gibcs5w5aI3y6).
+We use three Amazon datasets in our paper, all of which are available at [Google Drive](https://drive.google.com/drive/folders/1RcJ2M1l5zWPHYuGd9l5Gibcs5w5aI3y6).
 
 **NOTE:** We use the same model architecture as the backbone to generate item feature embeddings.
 
