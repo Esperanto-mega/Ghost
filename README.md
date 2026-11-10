@@ -19,12 +19,37 @@ k-means-constrained
 ```
 
 ---
+### Dataset
+We use three datasets in our paper, all of which have been uploaded to [Google Drive](https://drive.google.com/drive/folders/1RcJ2M1l5zWPHYuGd9l5Gibcs5w5aI3y6).
+
+**NOTE:** We use the same model architecture as the backbone to generate item feature embeddings.
+
+---
 ### Reproduction
-1. Head-Tail preprocessing: Split the items into head and tail groups using `Ghost/data/process/process_head-tail.py`.
-2. SKT: Run our SKT-based, modified RQ-KMeans algorithm to generate SIDs. The script is located at `Ghost/RQ-KMeans/run.sh`.
-3. Pretraining: Pretrain the Ghost framework using `Ghost/stage_1.sh`.
-4. AUO: Finetune the pretrained Ghost framework to mitigate popularity bias using `Ghost/stage_2.sh`.
-5. Evaluation: Evaluate Ghost using `Ghost/run_test_ddp.sh`.
+1. Head-Tail preprocessing: Split the items into head and tail groups using `Ghost/data/process/process_head-tail.py`:
+```bash
+cd data/process
+python process_head-tail.py
+cd ../..
+```
+2. SKT: Run our SKT-based modified RQ-KMeans algorithm to generate SIDs. Set `--data_path` to the item embedding file in `Ghost/RQ-KMeans/run.sh`, then run: 
+```bash
+cd RQ-KMeans
+bash run.sh
+cd ..
+```
+3. Pretraining: Set `BASE_MODEL` to the pretrained language model in `Ghost/stage_1.sh`, then run: 
+```bash
+bash stage_1.sh
+```
+4. AUO: Set `BASE_MODEL` to the pretrained Ghost framework in `Ghost/stage_2.sh`, then run: 
+```bash
+bash stage_2.sh
+```
+5. Evaluation: Set `BASE_MODEL` and `CKPT_PATH` in `run_test_ddp.sh` to the base model and fine-tuned checkpoint paths, respectively, then run:
+```bash
+bash run_test_ddp.sh
+```
 
 ---
 If this work is helpful, please cite this paper as the reference, through
